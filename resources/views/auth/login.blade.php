@@ -50,7 +50,7 @@
 
                 </div>
                 
-     <input id="password" type="password" class="ml-3 col-md-12 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+     <input placeholder="Enter Your Password" id="password" type="password" class="ml-3 col-md-12 form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -108,7 +108,8 @@
         <a href="forgot-password.html">I forgot my password</a>
       </p>
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+      <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+        
       </p>
     </div>
     <!-- /.card-body -->

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminlteController;
+use App\Http\Controllers\IndexController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,9 @@ use App\Http\Controllers\Admin\AdminlteController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class,'index'])->name('index');
 
 Auth::routes();
 
-Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('admin', [AdminlteController::class, 'admin'])->name('admin.admin');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
