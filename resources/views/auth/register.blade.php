@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+body{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color:lightgrey;
+    }
+</style>
+
 
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div style="margin-top:100px;" class="col-md-8">
   <div class="p-2 card card-outline card-primary">
     <div class="card-header text-center">
       <a href="#" class="h1"><b>Admin</b>LTE</a>
@@ -84,12 +91,12 @@
       </div>
     </div>
 
-    <div class="container mt-4">
+    <div class="container mt-2">
       <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-12">
             <label for="role" class=" col-form-label text-md-end">Please Select</label>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <select name="role_id" class="form-control">
                                 <option value="2">Reader</option>
                                 <option value="3">Auther</option>

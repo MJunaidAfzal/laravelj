@@ -4,13 +4,14 @@
 <style>
     body{
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color:lightgrey;
     }
 </style>
 
   <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="text-center col-md-4">
+        <div style="margin-top:100px;" class="text-center col-md-4 ">
         <div class=" card card-outline card-warning">
     <div class="card-header text-center">
       <a href="#" class="h1"><b>Admin</b>LTE</a>

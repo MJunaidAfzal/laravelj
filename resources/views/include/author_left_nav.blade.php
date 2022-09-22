@@ -113,6 +113,24 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+                <a href="{{route('categories.category')}}" class="nav-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('reader.index')}}" class="nav-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <p>Reader</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('authors.index')}}" class="nav-link">
+                  <i class="fa-solid fa-globe"></i>
+                  <p>Author</p>
+                </a>
+              </li>
 
 
         </ul>
