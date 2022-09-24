@@ -6,6 +6,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BlogController;
 
 
 
@@ -36,3 +37,6 @@ Route::get('categories/{id}/delete', [CategoryController::class, 'delete'])->nam
 
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
+
+Route::get('blog/create', [BlogController::class,'create'])->name('blogs.create');
+Route::post('blog/store', [BlogController::class,'store'])->name('blogs.store');

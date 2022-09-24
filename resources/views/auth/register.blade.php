@@ -99,7 +99,7 @@ body{
             <div class="col-md-12">
                 <select name="role_id" class="form-control">
                                 <option value="2">Reader</option>
-                                <option value="3">Auther</option>
+                                <option value="3">Author</option>
                                </select>
             </div>
       </div>
