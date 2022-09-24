@@ -7,8 +7,11 @@
     <title>Admin LTE</title>
 @include('include.style')
 @stack('styles')
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
 </head>
 <body>
 @include('include.nav')
@@ -21,6 +24,9 @@
 
 @include('include.script')
 @stack('scripts')
+<<<<<<< HEAD
     
+=======
+>>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
 </body>
 </html>

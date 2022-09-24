@@ -7,9 +7,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +41,12 @@ Route::get('categories/{id}/delete', [CategoryController::class, 'delete'])->nam
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
 
+<<<<<<< HEAD
 Route::get('blog/create', [BlogController::class,'create'])->name('blogs.create');
 Route::post('blog/store', [BlogController::class,'store'])->name('blogs.store');
+=======
+
+Route::get('blog/create', [BlogController::class,'create'])->name('blogs.create');
+Route::post('blog/store', [BlogController::class,'store'])->name('blogs.store');
+
+>>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577

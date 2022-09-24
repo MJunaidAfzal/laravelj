@@ -43,9 +43,15 @@
                     @endif
                 </td>
                 <td>
+<<<<<<< HEAD
                    <button class="btn btn-primary btn-sm "><a class="text-light" href="{{route('categories.edit',$category->id)}}"> <i class="fa fa-edit"></i> Edit</a></button> 
                     &nbsp;|&nbsp;
                    
+=======
+                   <button class="btn btn-primary btn-sm "><a class="text-light" href="{{route('categories.edit',$category->id)}}"> <i class="fa fa-edit"></i> Edit</a></button>
+                    &nbsp;|&nbsp;
+
+>>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
                     <button class="btn btn-danger btn-sm"> <a class="text-light" href="{{route('categories.delete',$category->id)}}">  <i class="fa fa-trash"></i>  Delete</a></button>
                 </td>
             </tr>
@@ -55,8 +61,16 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
    
 </div>
 
 
 @endsection                     
+=======
+
+</div>
+
+
+@endsection
+>>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
