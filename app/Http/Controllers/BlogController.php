@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
-=======
-use App\Models\Blog;
-use App\Models\Category;
-use Illuminate\Http\Request;
->>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
 
 class BlogController extends Controller
 {
@@ -18,6 +12,7 @@ class BlogController extends Controller
         $categories = Category::get();
         return view('blogs.create',compact('categories'));
     }
+  
 
 
     public function store(Request $request){
@@ -27,7 +22,8 @@ class BlogController extends Controller
             $image->move('uploads/image/blog',$imageName);
         }
         $store = Blog::create([
-            'category_id' => $request->category_id,
+            'category' => $request->category,
+            'blog' => $request->blog,
             'title' => $request->title,
             'image' => $imageName,
             'content' => $request->content,

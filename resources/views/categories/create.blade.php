@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <div class="row">
             <div class="col-md-10">
-                    <a href="{{route('categories.category')}}" class="btn btn-primary float-right mb-2"> VIEW ALL</a>
+                    <a href="{{route('categories.index')}}" class="btn btn-primary float-right mb-2"> VIEW ALL</a>
             </div>
             @if(Session::has('error'))
             <div class="col-md-10">
@@ -29,10 +29,21 @@
             <form action="{{route('categories.store')}}" method="POST" >
                 @csrf
                 <div class="row">
+                <div class="col-md-12 mt-3">
+                            <label for="author">Author</label>
+                            <select name="name" class="form-control" value="{{old('author')}}">
+                                <option value="">Please Select</option>
+                                @foreach($users as $user)
+                                    <option value="{{$user->name}}">{{$user->name}}</option>
+                                @endforeach
+                            </select>
+                            <small class="text-danger">@error ('name') {{ $message }} @enderror</small>
+                        </div>
+                    
                     <div class="mt-3 col-md-12">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name')}}">
-                        <small class="text-dark">@error('name')  {{$message}} @enderror</small>
+                        <label>Blog Name</label>
+                        <input type="text" name="blog_name" class="form-control" value="{{old('blog_name')}}">
+                        <small class="text-dark">@error('blog_name')  {{$message}} @enderror</small>
                     </div>
                     <div class="mt-3 col-md-12">
                         <label>status</label>

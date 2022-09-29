@@ -114,7 +114,7 @@
             </ul>
           </li>
           <li class="nav-item">
-                <a href="{{route('categories.category')}}" class="nav-link">
+                <a href="{{route('categories.index')}}" class="nav-link">
                   <i class="fa-solid fa-globe"></i>
                   <p>Category</p>
                 </a>

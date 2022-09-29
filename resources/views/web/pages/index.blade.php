@@ -35,52 +35,49 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8 col-lg-8 col-md-12">
-                    @foreach ($blogs as $blog)
                     <div class="postbox mb-40">
-                        <div class="postbox__thumb mb-25">
+                        @foreach($blogs as $blog)
+                        <div class="mt-5 postbox__thumb mb-25">
                             <a href="{{url('details')}}">
-                                <img src="{{asset('uploads/image/blog/'.$blog->image)}}" alt="hero image">
+                                <img src="{{asset('upload/image/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
                         </div>
-                            <div class="postbox__text">
-                                <div class="postbox__text-meta pb-20">
-                                    <ul>
-                                        <li>
-                                            <span class="post-cat">
-                                                <a href="#" tabindex="0">{{$blog->category->name}}</a>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>{{date('d M Y', strtotime($blog->created_at))}}</span>
-                                        </li>
-                                        <li>
-                                            <i class="far fa-comment"></i>
-                                            <span>(03)</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4 class="title-30 font-600 pr-0">
-                                    <a href="{{url('details')}}">{{$blog->title}}</a>
-                                </h4>
-                                <div class="desc-text mb-20">
-                                    <div class="row">
-                                        <div class="col-md-12">
-
-                                            {!!   Str::limit($blog->content,'100','...') !!}
-                                        </div>
-                                    </div>
-
-                                    <p>
-
-                                    </p>
-                                </div>
-                                <a href="#" class="read-more">read more</a>
+                        <div class="postbox__text">
+                            <div class="postbox__text-meta pb-20">
+                                <ul>
+                                    <li>
+                                        <span class="post-cat">
+                                            <a href="#" tabindex="0">{{ $blog->category->name }}</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="post-cat">
+                                            <a href="#" tabindex="0">{{ $blog->category->blog_name }}</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
+                                    </li>
+                                    <li>
+                                        <i class="far fa-comment"></i>
+                                        <span>(03)</span>
+                                    </li>
+                                </ul>
                             </div>
-
+                            <h4 class="title-30 font-600 pr-0">
+                                <a href="">{{ $blog->title }}</a>
+                            </h4>
+                            <div class="desc-text mb-20">
+                                 {!! $blog->content !!}
+                            </div>
+                            <a href="#" class="read-more">read more</a>
                         </div>
-                        @endforeach
+                    @endforeach
 
+
+                        
+                    </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12">
                     <div class="widget mb-40">

@@ -1,18 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminlteController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //categorie
-Route::get('categories' , [CategoryController::class , 'category'])->name('categories.category');
+Route::get('categories' , [CategoryController::class , 'index'])->name('categories.index');
 Route::get('categories/create' , [CategoryController::class , 'create'])->name('categories.create');
 Route::post('categories/store' , [CategoryController::class , 'store'])->name('categories.store');
 Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
@@ -41,12 +35,7 @@ Route::get('categories/{id}/delete', [CategoryController::class, 'delete'])->nam
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
 
-<<<<<<< HEAD
-Route::get('blog/create', [BlogController::class,'create'])->name('blogs.create');
-Route::post('blog/store', [BlogController::class,'store'])->name('blogs.store');
-=======
 
-Route::get('blog/create', [BlogController::class,'create'])->name('blogs.create');
-Route::post('blog/store', [BlogController::class,'store'])->name('blogs.store');
+Route::get('create', [BlogController::class,'create'])->name('blogs.create');
+Route::post('store', [BlogController::class,'store'])->name('blogs.store');
 
->>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577

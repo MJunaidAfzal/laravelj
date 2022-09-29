@@ -114,20 +114,13 @@
             </ul>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
                 <a href="{{route('blogs.create')}}" class="nav-link">
                   <i class="fa-solid fa-globe"></i>
                   <p>Blogs</p>
                 </a>
               </li>
          
-=======
-                <a href="{{route('categories.create')}}" class="nav-link">
-                  <i class="fa-solid fa-globe"></i>
-                  <p>Category</p>
-                </a>
-              </li>
->>>>>>> 977aa7705b538266a30dd6b10d9798d0ef515577
+            
 
 
         </ul>
