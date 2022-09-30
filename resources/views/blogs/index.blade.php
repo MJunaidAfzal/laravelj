@@ -37,7 +37,7 @@
             <tr>
                 <td>{{($blog->id)}}</td>
                 <td>{{($blog->title)}}</td>
-                <td style="width:10%"><img class="rounded img-thumbnail" src="{{asset('upload/blog/'.$blog->blog)}}" alt="" width="100%"></td>         
+                <td style="height:100px;width:100px;"><img class="rounded bg-dark img-thumbnail" src="{{asset('upload/blog/'.$blog->image)}}"  ></td>         
                 <td>{{($blog->category_id)}}</td>
                 <td>{{($blog->short_discription)}}</td>
  

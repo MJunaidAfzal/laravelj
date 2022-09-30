@@ -45,9 +45,10 @@
                         <div class="postbox__text">
                             <div class="postbox__text-meta pb-20">
                                 <ul>
-                                    <li>
+                                   
+                                <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category->category_id }}</a>
+                                            <a href="#" tabindex="0">{{ $blog->category_id}}</a>
                                         </span>
                                     </li>
                                 

@@ -38,15 +38,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title"  value="{{old('name', $blog->name) }}">
+                            <input type="text" class="form-control" name="title"  value="{{old('title', $blog->title) }}">
                             <small class="text-danger">@error ('title') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
                     <label class="text-dark" for="blog"><b>Thumbnail</b></label>
                               <input type="file" class="form-control" name="blog" value="{{old('blog', $blog->blog) }}">
                         <small class="text-danger">@error('blog'){{$message}} @enderror</small>
-                        @if(!empty($blog->blog))
-                        <img src="{{asset('upload/blog/'.$blog->blog)}}" class="img-thumbnail" style="height:100px; width:100px">
+                        @if(!empty($blog->image))
+                        <img src="{{asset('upload/blog/'.$blog->image)}}" class="img-thumbnail bg-dark" style="height:50px; width:70px">
                         @endif
                     </div>
                         <div class="col-md-12 mt-3">
