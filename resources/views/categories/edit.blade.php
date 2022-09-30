@@ -31,11 +31,7 @@
                         <input type="text" name="name" class="form-control"  value="{{$category->name}}">
                         <small class="text-danger">@error('name')  {{$message}} @enderror</small>
                     </div>
-                    <div class="mt-3 col-md-12">
-                        <label>Blog Name</label>
-                        <input type="text" name="blog_name" class="form-control"  value="{{$category->blog_name}}">
-                        <small class="text-danger">@error('blog_name')  {{$message}} @enderror</small>
-                    </div>
+                  
                     <div class="mt-3 col-md-12">
                         <label>Status</label>
                         <select name="status"  class="form-control"  value="{{$category->status}}">

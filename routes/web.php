@@ -35,7 +35,12 @@ Route::get('categories/{id}/delete', [CategoryController::class, 'delete'])->nam
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
 Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
 
+//blog
 
-Route::get('create', [BlogController::class,'create'])->name('blogs.create');
-Route::post('store', [BlogController::class,'store'])->name('blogs.store');
+Route::get('blogs' , [BlogController::class , 'index'])->name('blogs.index');
+Route::get('blogs/create' , [BlogController::class , 'create'])->name('blogs.create');
+Route::post('blogs/store' , [BlogController::class , 'store'])->name('blogs.store');
+Route::get('blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
+Route::post('blogs/{id}/update', [BlogController::class, 'update'])->name('blogs.update');
+Route::get('blogs/{id}/delete', [BlogController::class, 'delete'])->name('blogs.delete');
 

@@ -39,7 +39,7 @@
                         @foreach($blogs as $blog)
                         <div class="mt-5 postbox__thumb mb-25">
                             <a href="{{url('details')}}">
-                                <img src="{{asset('upload/image/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
+                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
                         </div>
                         <div class="postbox__text">
@@ -47,14 +47,10 @@
                                 <ul>
                                     <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category->name }}</a>
+                                            <a href="#" tabindex="0">{{ $blog->category->category_id }}</a>
                                         </span>
                                     </li>
-                                    <li>
-                                        <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category->blog_name }}</a>
-                                        </span>
-                                    </li>
+                                
                                     <li>
                                         <i class="fas fa-calendar-alt"></i>
                                         <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
@@ -68,9 +64,7 @@
                             <h4 class="title-30 font-600 pr-0">
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
-                            <div class="desc-text mb-20">
-                                 {!! $blog->content !!}
-                            </div>
+                           <p>{{$blog->short_discription}}</p>
                             <a href="#" class="read-more">read more</a>
                         </div>
                     @endforeach

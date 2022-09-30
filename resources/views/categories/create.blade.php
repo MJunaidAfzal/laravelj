@@ -40,11 +40,7 @@
                             <small class="text-danger">@error ('name') {{ $message }} @enderror</small>
                         </div>
                     
-                    <div class="mt-3 col-md-12">
-                        <label>Blog Name</label>
-                        <input type="text" name="blog_name" class="form-control" value="{{old('blog_name')}}">
-                        <small class="text-dark">@error('blog_name')  {{$message}} @enderror</small>
-                    </div>
+                    
                     <div class="mt-3 col-md-12">
                         <label>status</label>
                         <select name="status"  class="form-control" >

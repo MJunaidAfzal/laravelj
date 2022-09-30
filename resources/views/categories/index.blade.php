@@ -26,7 +26,6 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Blog Name</th>
                 <th>status</th>
                 <th>Action</th>
             </tr>
@@ -36,7 +35,6 @@
             <tr>
                 <td>{{($category->id)}}</td>
                 <td>{{($category->name)}}</td>
-                <td>{{($category->blog_name)}}</td>
 
                 <td>
                     @if($category->status == 1)

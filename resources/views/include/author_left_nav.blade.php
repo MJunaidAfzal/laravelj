@@ -114,7 +114,7 @@
             </ul>
           </li>
           <li class="nav-item">
-                <a href="{{route('blogs.create')}}" class="nav-link">
+                <a href="{{route('blogs.index')}}" class="nav-link">
                   <i class="fa-solid fa-globe"></i>
                   <p>Blogs</p>
                 </a>

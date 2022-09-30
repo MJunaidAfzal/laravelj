@@ -22,12 +22,10 @@ class CategoryController extends Controller
 
         $request->validate([
             'name' => 'required|max:191|unique:categories,name',
-            'blog_name' => 'required|max:191|unique:categories,blog_name',
             'status' => 'required',
         ]);
         $store = Category::create([
             'name' => $request->name,
-            'blog_name' => $request->blog_name,
             'status' => $request->status,
         ]);
 
@@ -51,12 +49,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         $request->validate([ 
         'name' => 'required|max:191|:categories,name'.$id,
-        'blog_name' => 'required|max:191|:categories,blog_name'.$id,
         'status' => 'required',
     ]);
     $update = Category::where('id',$id)->update([
         'name' => $request->name,
-        'blog_name' => $request->blog_name,
         'status' => $request->status,
     ]);
     if($update > 0){
