@@ -115,7 +115,7 @@
           </li>
           <li class="nav-item">
                 <a href="{{route('blogs.index')}}" class="nav-link">
-                  <i class="fa-solid fa-globe"></i>
+                  <i class="fa fa-edit"></i>
                   <p>Blogs</p>
                 </a>
               </li>

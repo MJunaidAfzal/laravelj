@@ -115,20 +115,20 @@
           </li>
           <li class="nav-item">
                 <a href="{{route('categories.index')}}" class="nav-link">
-                  <i class="fa-solid fa-globe"></i>
-                  <p>Category</p>
+                  <i class="fa fa-address-card"></i>
+                  <p class="ml-3">Category</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('reader.index')}}" class="nav-link">
-                  <i class="fa-solid fa-globe"></i>
-                  <p>Reader</p>
+                  <i class="fa fa-user"></i>
+                  <p class="ml-3">Reader</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('authors.index')}}" class="nav-link">
-                  <i class="fa-solid fa-globe"></i>
-                  <p>Author</p>
+                  <i class="fa fa-user"></i>
+                  <p class="ml-3">Author</p>
                 </a>
               </li>
 

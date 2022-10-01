@@ -19,7 +19,7 @@
     </div>
 
     @if(Session::has('error'))
-            <div class="col-md-12">
+            <div style="margin-left:22%" class="col-md-10 ">
                 <div class="alert alert-danger">{{Session::get('error')}}</div>
             </div>
             @endif

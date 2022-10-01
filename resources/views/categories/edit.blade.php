@@ -6,7 +6,6 @@
     }
 </style>
 <div style="margin-left: 22%;" class="container mt-5">
-<div class="container mt-5">
     <div class="row">
             <div class="col-md-10">
                     <a href="{{route('categories.index')}}" class="btn btn-success float-right mb-2"> VIEW ALL</a>
@@ -52,6 +51,5 @@
         </div>
     </div>
    
-</div>
-</div>
+
 @endsection

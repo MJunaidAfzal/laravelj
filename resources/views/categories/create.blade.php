@@ -9,7 +9,6 @@
     }
 </style>
 <div style="margin-left: 22%;" class="container mt-5">
-<div class="container mt-5">
     <div class="row">
             <div class="col-md-10">
                     <a href="{{route('categories.index')}}" class="btn btn-primary float-right mb-2"> VIEW ALL</a>
@@ -19,7 +18,7 @@
                 <div class="alert alert-danger">{{Session::get('error')}}</div>
             </div>
             @endif
-    </div>
+            </div>
     <div class="container">
         <div class="row">
             <div class="col-md-10">
@@ -59,8 +58,7 @@
       </div>
             </div>
         </div>
-    </div>
+        </div>
 
-</div>
-</div>
+
 @endsection

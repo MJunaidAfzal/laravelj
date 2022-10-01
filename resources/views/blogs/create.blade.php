@@ -13,12 +13,12 @@
         </div>
     </div>
 
-    <div style="margin-left: 22%;" class="container">
-        <form class="mt-5" action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data" novalidate>
-            @csrf
-            <div class="container">
+    <div style="margin-left:22%" class="container">
                 <div class="row">
                     <div class="col-md-10">
+        <form class="mt-5" action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data" novalidate>
+            @csrf
+         
                     <div class="card">
                 <div class="card-header bg-dark">
                     <h2 class="text-center text-light"><b>CREATE BLOG</b> </h2>
@@ -56,12 +56,12 @@
                     <button class="btn btn-primary mt-3 btn-block" type="submit"><b>SUBMIT</b></button>
                 </div>
             </div>
-                    </div>
+                
+        </form>
+        </div>
                 </div>
             </div>
             
-        </form>
-    </div>
 @endsection
 @push('scripts')
 <script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.1/tinymce.min.js"></script>

@@ -37,7 +37,7 @@
                 <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
-                        <div class="mt-5 postbox__thumb mb-25">
+                        <div class="mt-2 postbox__thumb mb-25">
                             <a href="{{url('details')}}">
                                 <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
@@ -65,7 +65,7 @@
                             <h4 class="title-30 font-600 pr-0">
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
-                           <p>{{$blog->short_discription}}</p>
+                           <p>{!! $blog->short_discription !!}</p>
                             <a href="#" class="read-more">read more</a>
                         </div>
                     @endforeach
