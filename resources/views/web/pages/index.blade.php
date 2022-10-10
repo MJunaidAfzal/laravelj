@@ -4,8 +4,15 @@
     <!-- hero-area start -->
     <div class="page-banner-area mt-60">
         <div class="container">
+
             <div class="row">
-                <div class="col-md-12 text-right">
+
+                <div class="col-md-12 ">
+
+         <a style="font-size:18px;" class="badge badge-success badge-lg" href="{{ route('home')}}">BLOG</a>       
+
+                <div class="text-right ">
+                    
                     @auth
                         Hello, {{auth()->user()->name}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -18,6 +25,8 @@
                     @endguest
                 </div>
             </div>
+            </div>
+
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-bar text-center pt-60 pb-60" style="background-image: url({{asset('assets/img/bg/page-itle.jpg')}})">
@@ -38,7 +47,7 @@
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
                         <div class="mt-2 postbox__thumb mb-25">
-                            <a href="{{url('details')}}">
+                        <a href="{{route('blog/details' , $blog->id)}}">
                                 <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
                         </div>
@@ -66,7 +75,7 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                            <p>{!! $blog->short_discription !!}</p>
-                            <a href="#" class="read-more">read more</a>
+                            <a href="{{route('blog/details' , $blog->id)}}" class="read-more">read more</a>
                         </div>
                     @endforeach
 

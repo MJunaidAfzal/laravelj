@@ -27,12 +27,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control" name="title" value="{{old('title')}}">
                             <small class="text-danger">@error ('title') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
                             <label for="blog">Thumbnail</label>
-                            <input type="file" class="form-control" name="blog">
+                            <input type="file" class="form-control" name="blog" value="{{old('image')}}">
                             <small class="text-danger">@error ('blog') {{ $message }} @enderror</small>
                         </div>
                         <div class="col-md-12 mt-3">
@@ -40,7 +40,7 @@
                             <select name="category_id" class="form-control">
                                 <option value="">Please Select</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->name}}">{{$category->name}}</option>
+                                <option value="{{$category->name}}" {{ old("category_name") == $category->name ? "selected" : "" }} >{{$category->name}}</option>
                                 @endforeach
                             </select>
                             <small class="text-danger">@error ('category_id') {{ $message }} @enderror</small>
@@ -48,8 +48,14 @@
                           
                         <div class="col-md-12 mt-3">
                             <label for="short_discription">short_discription</label>
-                            <textarea name="short_discription" cols="30" rows="7" class="form-control"></textarea>
+                            <textarea name="short_discription" cols="30" rows="7" onKeyPress class="form-control">{{old('short_discription')}}</textarea>
                             <small class="text-danger">@error ('short_discription') {{ $message }} @enderror</small>                            
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for="long_discription">long_discription</label>
+                            <textarea name="long_discription" id="long_discription" cols="30" rows="7" onKeyPress class="form-control">{{old('long_discription')}}</textarea>
+                            <small class="text-danger">@error ('long_discription') {{ $message }} @enderror</small>                            
                         </div>
                        
                     </div>
@@ -66,6 +72,6 @@
 @push('scripts')
 <script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.1/tinymce.min.js"></script>
 <script>
-    tinymce.init({ selector:'textarea' });
+    tinymce.init({ selector:'#long_discription' });
 </script>
 @endpush

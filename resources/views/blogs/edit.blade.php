@@ -62,8 +62,14 @@
                           
                         <div class="col-md-12 mt-3">
                             <label for="short_discription">short_discription</label>
-                            <textarea name="short_discription" cols="30" rows="8" class="form-control" value="{{old('short_discription', $blog->short_discription) }}"></textarea>
+                            <textarea name="short_discription" cols="30" rows="7" onKeyPress class="form-control" >{{$blog->short_discription}}</textarea>
                             <small class="text-danger">@error ('short_discription') {{ $message }} @enderror</small>                            
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for="long_description">long_description</label>
+                            <textarea name="long_description" id="long_description" cols="30" rows="7" onKeyPress class="form-control" >{{$blog->long_description}}</textarea>
+                            <small class="text-danger">@error ('long_description') {{ $message }} @enderror</small>                            
                         </div>
                       
                     </div>
@@ -81,6 +87,6 @@
 @push('scripts')
 <script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.5.1/tinymce.min.js"></script>
 <script>
-    tinymce.init({ selector:'textarea' });
+    tinymce.init({ selector:'#long_description' });
 </script>
 @endpush

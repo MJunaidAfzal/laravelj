@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('category_id');
             $table->integer('author_id');
-            $table->string('short_discription');
+            $table->text('short_discription');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

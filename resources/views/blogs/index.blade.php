@@ -25,10 +25,12 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Author</th>
                 <th>Title</th>
                 <th>Thumbnail</th>
-                <th>Category_id</th>
+                <th>Category</th>
                 <th>Short_discription</th>
+                <th>Long_discription</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -36,10 +38,13 @@
             @foreach($blogs as $blog)
             <tr>
                 <td>{{($blog->id)}}</td>
+                <td>{{( $blog->author->name )}}</td>
                 <td>{{($blog->title)}}</td>
                 <td style="height:100px;width:100px;"><img class="rounded bg-dark img-thumbnail" src="{{asset('upload/blog/'.$blog->image)}}"  ></td>         
                 <td>{{($blog->category_id)}}</td>
                 <td>{{($blog->short_discription)}}</td>
+                <td>{{( $blog->long_discription )}}</td>
+
  
                
                 <td>

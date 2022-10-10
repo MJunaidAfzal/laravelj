@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProfileController;
+
 
 
 /*
@@ -20,6 +22,8 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', [IndexController::class,'index'])->name('index');
+Route::get('blog/details/{id}', [IndexController::class, 'details'])->name('blog/details');
+
 
 Auth::routes();
 
@@ -43,4 +47,8 @@ Route::post('blogs/store' , [BlogController::class , 'store'])->name('blogs.stor
 Route::get('blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
 Route::post('blogs/{id}/update', [BlogController::class, 'update'])->name('blogs.update');
 Route::get('blogs/{id}/delete', [BlogController::class, 'delete'])->name('blogs.delete');
+
+//profile
+Route::get('author/profile' , [ProfileController::class , 'profile'])->name('profile.edit');
+Route::post('author/profile-update' , [ProfileController::class , 'update'])->name('profile.update');
 
