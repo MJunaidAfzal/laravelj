@@ -26,9 +26,9 @@ class BlogController extends Controller
     public function store(Request $request){
         $request->validate([
             'title' => 'required|max:191|:blogs,title',
-            'category_id' => 'required|max:191|unique:blogs,category_id',
+            'category_id' => 'required|max:191|:blogs,category_id',
             'short_discription' => 'required|max:800|:blogs,short_discription',
-            'long_discription' => 'required|max:8000|:blogs,long_discription',
+            'long_discription' => 'required|:blogs,long_discription',
 
           
         ]);
@@ -66,9 +66,9 @@ class BlogController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'title' => 'required|max:191|:blogs,title'.$id,
-            'category_id' => 'required|max:191|unique:blogs,category_id,'.$id,
+            'category_id' => 'required|max:191|:blogs,category_id,'.$id,
             'short_discription' => 'required|max:800|:blogs,short_discription'.$id,
-            'long_discription' => 'required|max:8000|:blogs,long_discription'.$id,
+            'long_discription' => 'required|:blogs,long_discription'.$id,
 
         ]);
 

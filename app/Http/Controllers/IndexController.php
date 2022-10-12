@@ -16,8 +16,7 @@ class IndexController extends Controller
 
     
     public function details($id){
-        $user = User::where('id',auth()->user()->id)->first();
         $blog = Blog::where('id',$id)->first();
-        return view('web.pages.details',compact('blog','user'));
+        return view('web.pages.details',compact('blog'));
     }
 }
