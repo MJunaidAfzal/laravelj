@@ -1,4 +1,20 @@
 @extends('web.layout.scaffold')
+@push('styles')
+    <style>
+    .pagination {
+        display: block !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        border-radius: 0 !important;
+        padding-bottom: 3px !important;
+    }
+    .page-item{
+        display: inline-block;
+    margin-right: 2px;
+    margin-bottom: 10px;
+    }
+    </style>
+@endpush
 @section('content')
 <main>
     <!-- hero-area start -->
@@ -47,7 +63,7 @@
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
                         <div class="mt-2 postbox__thumb mb-25">
-                        <a href="{{route('blog/details' , $blog->id)}}">
+                        <a href="{{route('web.pages.details' , $blog->id)}}">
                                 <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
                             </a>
                         </div>
@@ -75,7 +91,7 @@
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
                            <p>{!! $blog->short_discription !!}</p>
-                            <a href="{{route('blog/details' , $blog->id)}}" class="read-more">read more</a>
+                            <a href="{{route('web.pages.details' , $blog->id)}}" class="read-more">read more</a>
                         </div>
                     @endforeach
 
@@ -183,6 +199,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="widget widget-border mt-4 mb-40">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul>
+                            @foreach($categories as $category)
+                                <li><a href="{{route('web.pages.categoryWise',$category->id)}}">{{$category->name}} <span>{{$category->categoryCount($category->id)}}</span></a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
                     </div>
                     <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Subscribe our Newsletter!</h3>
@@ -235,33 +261,10 @@
                 </div>
             </div>
 
+            
             <div class="row mt-10">
-                <div class="col-xl-12">
-                    <div class="pagination">
-                        <ul>
-                            <li>
-                                <a href="{{url('details')}}">Prev</a>
-                            </li>
-                            <li class="active">
-                                <a href="{{url('details')}}">
-                                    <span>1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">
-                                    <span>2</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">
-                                    <span>3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('details')}}">Next</a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-md-12">
+                    {{ $blogs->links() }}
                 </div>
             </div>
         </div>

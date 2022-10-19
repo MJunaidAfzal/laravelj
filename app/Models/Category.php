@@ -13,4 +13,9 @@ class Category extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function categoryCount($id){
+        $blogs  = Blog::where('category_id',$id)->count();
+        return $blogs;
+    }
+
 }

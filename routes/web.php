@@ -22,7 +22,11 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [IndexController::class,'index'])->name('index');
-Route::get('blog/details/{id}', [IndexController::class, 'details'])->name('blog/details');
+Route::get('blog/details/{id}', [IndexController::class, 'details'])->name('web.pages.details');
+Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web.pages.categoryWise');
+Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
+
+
 
 
 Auth::routes();

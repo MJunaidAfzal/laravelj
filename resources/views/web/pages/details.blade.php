@@ -48,6 +48,10 @@
                                     <i class="far fa-comment"></i>
                                     <span>(0)</span>
                                 </li>
+                                <li>
+                                <i class="fa fa-eye"></i>
+                                    <span>{{$blog->views}}</span>
+                                </li>
                             </ul>
                         </div>
                          <!-- share-post-link -->
@@ -102,7 +106,9 @@
                         <div class="author-meta  mt-60">
                             <div class="media flex-column flex-md-row">
                                 <div class="media-left">
-                                <a href="#"><img src="{{asset('upload/thumbnail/'.$blog->author->thumbnail)}}" alt=""> </a>
+                                <a href="{{route('web.pages.authorWise',$blog->author_id)}}">
+                                    <img src="{{asset('upload/thumbnail/'.$blog->author-> thumbnail)}}" alt="" class="">
+                                </a>
                                 </div>
                                 <div class="media-body">
                                 <span class="media-heading">
@@ -128,28 +134,7 @@
                         </div>
 
                          <!-- s-content__pagenav -->
-                        <div class="s-content__pagenav mt-60">
-                            <div class="s-content__nav">
-                               <div class="row">
-                                   <div class="col-md-6">
-                                        <div class="s-content__prev mb-30">
-                                            <a href="#0" rel="prev">
-                                                <span>Previous Post</span>
-                                                 Farmers plead for bullets to put down emaciated stock
-                                            </a>
-                                        </div>
-                                   </div>
-                                   <div class="col-md-6">
-                                        <div class="s-content__next mb-30 text-left text-md-right">
-                                            <a href="#0" rel="next">
-                                                <span>Next Post</span>
-                                                 Nahan downplays Liberal lership tensions after white ant
-                                            </a>
-                                        </div>
-                                   </div>
-                               </div>
-                            </div>
-                        </div>
+                     
 
                          <!-- also-like -->
                         <div class="also-like mt-30">
@@ -157,11 +142,12 @@
                                 <h2>You may also like</h2>
                             </div>
                             <div class="row">
+                                @foreach($alsoLike as $item)
                                 <div class="col-lg-4 col-md-4">
                                     <div class="postbox mb-30">
                                         <div class="postbox__thumb">
-                                            <a href="#">
-                                                <img class="img-100" src="{{asset('assets/img/trendy/sm1.jpg')}}" alt="hero image">
+                                            <a href="{{route('web.pages.details' , $item->id)}}">
+                                              <img src="{{asset('upload/blog/'.$item->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG" width="100%">
                                             </a>
                                         </div>
                                         <div class="postbox__text pt-10">
@@ -169,7 +155,7 @@
                                                 <ul>
                                                     <li>
                                                         <i class="fas fa-calendar-alt"></i>
-                                                        <span>01 Sep 2018</span>
+                                                        <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
                                                     </li>
                                                     <li>
                                                         <i class="far fa-comment"></i>
@@ -178,63 +164,12 @@
                                                 </ul>
                                             </div>
                                             <h4 class="pr-0">
-                                                <a href="#">Paul Manafort’s Accountant Testifies She Helped Alter Financial</a>
-                                            </h4>
+                                                    <a href="#">{{$item->title}}</a>
+                                                </h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="postbox mb-30">
-                                        <div class="postbox__thumb">
-                                            <a href="#">
-                                                <img class="img-100" src="{{asset('assets/img/trendy/sm2.jpg')}}" alt="hero image">
-                                            </a>
-                                        </div>
-                                        <div class="postbox__text pt-10">
-                                            <div class="postbox__text-meta pb-10">
-                                                <ul>
-                                                    <li>
-                                                        <i class="fas fa-calendar-alt"></i>
-                                                        <span>01 Sep 2018</span>
-                                                    </li>
-                                                    <li>
-                                                        <i class="far fa-comment"></i>
-                                                        <span>(03)</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <h4 class="pr-0">
-                                                <a href="#">Paul Manafort’s Accountant Testifies She Helped Alter Financial</a>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="postbox mb-30">
-                                        <div class="postbox__thumb">
-                                            <a href="#">
-                                                <img class="img-100" src="{{asset('assets/img/trendy/sm3.jpg')}}" alt="hero image">
-                                            </a>
-                                        </div>
-                                        <div class="postbox__text pt-10">
-                                            <div class="postbox__text-meta pb-10">
-                                                <ul>
-                                                    <li>
-                                                        <i class="fas fa-calendar-alt"></i>
-                                                        <span>01 Sep 2018</span>
-                                                    </li>
-                                                    <li>
-                                                        <i class="far fa-comment"></i>
-                                                        <span>(03)</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <h4 class="pr-0">
-                                                <a href="#">Paul Manafort’s Accountant Testifies She Helped Alter Financial</a>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
+                            @endforeach
                             </div>
                         </div>
 
@@ -327,108 +262,42 @@
                     </div>
                     <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Popular posts</h3>
-                        <div class="post__small mb-30">
-                            <div class="post__small-thumb f-left">
-                                <a href="#">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-1.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="#">Fashion</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="#">Husar asks expenses authority to entitlements after Bruno</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
+                        @forelse ($popularPosts as $item)
+                            <div class="post__small mb-30">
+                                <div class="post__small-thumb f-left">
+                                    <a href="{{ route('web.pages.details' , $item->id) }}">
+                                        <img src="{{asset('upload/blog/'.$item->image)}}" alt="hero image" style="height:100px; width:100px;">
+                                    </a>
+                                </div>
+                                <div class="post__small-text fix pl-10">
+                                    <span class="sm-cat">
+                                        <a href="#">{{$item->category_id}}</a>
+                                    </span>
+                                    <h4 class="title-13 pr-0">
+                                        <a href="#">{{$item->title}}</a>
+                                    </h4>
+                                    <div class="post__small-text-meta">
+                                        <ul>
+                                            <li>
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="post__small mb-30">
-                            <div class="post__small-thumb f-left">
-                                <a href="#">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-2.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="#">Fashion</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="#">Researchers claim majo throug in the fight to cure fibrosis</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post__small mb-30">
-                            <div class="post__small-thumb f-left">
-                                <a href="#">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-3.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="#">Fashion</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="#">Nahan downplays Liberal lership tensions after white ant</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post__small">
-                            <div class="post__small-thumb f-left">
-                                <a href="#">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-4.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="#">Travel</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="#">Farmers plead for bullets to put down emaciated stock</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+
+                        @endforelse
+
+
                     </div>
                     <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Categories</h3>
                         <ul>
-                            <li><a href="#">Business <span>02</span></a></li>
-                            <li><a href="#">Politic <span>05</span></a></li>
-                            <li><a href="#">Fashion <span>01</span></a></li>
-                            <li><a href="#">Corporate <span>03</span></a></li>
-                            <li><a href="#">Football <span>07</span></a></li>
-                            <li><a href="#">Magazine <span>06</span></a></li>
+                        @foreach($categories as $category)
+                                <li><a href="{{route('web.pages.categoryWise',$category->id)}}">{{$category->name}} <span>{{$category->categoryCount($category->id)}}</span></a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="widget widget-border mb-40">
