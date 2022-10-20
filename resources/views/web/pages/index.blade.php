@@ -30,7 +30,7 @@
                 <div class="text-right ">
                     
                     @auth
-                        Hello, {{auth()->user()->name}}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
+                        Hello, <a href="{{route('web.profile.edit')}}">{{auth()->user()->name}}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -105,100 +105,37 @@
                             <img src="{{asset('assets/img/add/add-sidebar.jpg')}}" alt="">
                         </a>
                     </div>
-                    <div class="widget widget-border mb-40">
+                    <div class="widget widget-border mb-40 ">
                         <h3 class="widget-title">Popular posts</h3>
+                        @forelse ($popularPosts as $item)
                         <div class="post__small mb-30">
                             <div class="post__small-thumb f-left">
-                                <a href="{{url('details')}}">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-1.jpg')}}" alt="hero image">
+                                <a href="{{ route('web.pages.details' , $item->id) }}">
+                                    <img src="{{asset('upload/blog/'.$item->image)}}" alt="hero image" style="height:100px; width:100px;">
                                 </a>
                             </div>
-                            <div class="post__small-text fix pl-10">
+                            <div class="post__small-text fix pl-10 ">
                                 <span class="sm-cat">
-                                    <a href="{{url('details')}}">Fashion</a>
+                                    <a href="#">{{$item->category_id}}</a>
                                 </span>
                                 <h4 class="title-13 pr-0">
-                                    <a href="{{url('details')}}">Husar asks expenses authority to entitlements after Bruno</a>
+                                    <a href="#">{{$item->title}}</a>
                                 </h4>
                                 <div class="post__small-text-meta">
                                     <ul>
                                         <li>
                                             <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
+                                            <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="post__small mb-30">
-                            <div class="post__small-thumb f-left">
-                                <a href="{{url('details')}}">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-2.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="{{url('details')}}">Fashion</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="{{url('details')}}">Researchers claim majo throug in the fight to cure fibrosis</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post__small mb-30">
-                            <div class="post__small-thumb f-left">
-                                <a href="{{url('details')}}">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-3.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="{{url('details')}}">Fashion</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="{{url('details')}}">Nahan downplays Liberal lership tensions after white ant</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post__small">
-                            <div class="post__small-thumb f-left">
-                                <a href="{{url('details')}}">
-                                    <img src="{{asset('assets/img/trendy/xs/xs-4.jpg')}}" alt="hero image">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10">
-                                <span class="sm-cat">
-                                    <a href="{{url('details')}}">Travel</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="{{url('details')}}">Farmers plead for bullets to put down emaciated stock</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>01 Sep 2018</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+
+                        @endforelse
+
+
 
                         <div class="widget widget-border mt-4 mb-40">
                         <h3 class="widget-title">Categories</h3>

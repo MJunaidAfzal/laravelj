@@ -7,6 +7,7 @@ use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserProfileController;
 
 
 
@@ -25,6 +26,10 @@ Route::get('/', [IndexController::class,'index'])->name('index');
 Route::get('blog/details/{id}', [IndexController::class, 'details'])->name('web.pages.details');
 Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web.pages.categoryWise');
 Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
+
+//user profile
+Route::get('profile', [UserProfileController::class, 'edit'])->name('web.profile.edit');
+Route::post('profile/update', [UserProfileController::class, 'update'])->name('web.profile.update');
 
 
 
