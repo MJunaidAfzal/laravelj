@@ -35,7 +35,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{route('home')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -114,25 +114,23 @@
             </ul>
           </li>
           <li class="nav-item">
-                <a href="{{route('categories.index')}}" class="nav-link">
-                  <i class="fa fa-address-card"></i>
-                  <p class="ml-3">Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('reader.index')}}" class="nav-link">
-                  <i class="fa fa-user"></i>
-                  <p class="ml-3">Reader</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('authors.index')}}" class="nav-link">
-                  <i class="fa fa-user"></i>
-                  <p class="ml-3">Author</p>
-                </a>
-              </li>
-
-
+              <a href="{{route('category.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Category</p>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{route('reader.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Reader</p>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a href="{{route('authors.index')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Author</p>
+              </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

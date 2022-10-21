@@ -8,22 +8,24 @@
         color:black;
     }
 </style>
-<div  class="container mt-5">
+<div style="margin-left: 18%;" class="container mt-5">
+<div class="container mt-5">
     <div class="row">
-            @if(Session::has('error'))
-            <div class="col-md-12">
-                <div class="alert alert-danger">{{Session::get('error')}}</div>
-            </div>
-            @endif
-           
+
+    @if(Session::has('success'))
+        <div class="col-md-12 alert alert-info alert-dismissible fade show mb-5 mt-5" role="alert">
+        {{Session::get('success')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
     </div>
-            <div style="margin-left:20%"  class="container">
-                <div class="row">
-                    <div class="col-md-10">
-                    <div class="card">
-        <h5 class="card-header text-center bg-secondary  text-dark " > <b>PROFILE UPDATE</b></h5>
+    <div class="card">
+        <h5 class="card-header text-center  text-dark " > <b>Author Profile</b></h5>
         <div class="card-body ">
-        <form action="{{route('profile.update' )}}"  method="POST" enctype="multipart/form-data">
+            <form action="{{route('profile.update' )}}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                 <div class="col-md-12 mt-3">
@@ -44,36 +46,33 @@
                     <textarea name="about" cols="20" rows="4" onKeyPress class="form-control">{{(auth()->user()->about)}}</textarea>
                     <small class="text-danger">@error ('about') {{ $message }} @enderror</small>
                 </div>
-                <div class="col-md-6 mt-3">
+                <div class="col-md-12 mt-3">
                     <label for="facebook">Facebook</label>
                     <input type="text" name="facebook" class="form-control" value="{{(auth()->user()->facebook)}}">
                     <small class="text-danger">@error ('facebook') {{ $message }} @enderror</small>
                 </div>
-                <div class="col-md-6 mt-3">
+                <div class="col-md-12 mt-3">
                     <label for="google">Google</label>
                     <input type="text" name="google" class="form-control" value="{{(auth()->user()->google)}}">
                     <small class="text-danger">@error ('google') {{ $message }} @enderror</small>
                 </div>
-                <div class="col-md-6 mt-3">
+                <div class="col-md-12 mt-3">
                     <label for="twitter" >Twitter</label>
                     <input type="text" name="twitter"  class="form-control" value="{{(auth()->user()->twitter)}}">
                     <small class="text-danger">@error ('twitter') {{ $message }} @enderror</small>
                 </div>
-                <div class="col-md-6 mt-3">
+                <div class="col-md-12 mt-3">
                     <label for="linkedin">LinkedIn</label>
                     <input type="text" name="linkedin" class="form-control" value="{{(auth()->user()->linkedin)}}">
                     <small class="text-danger">@error ('linkedin') {{ $message }} @enderror</small>
                 </div>
                     <div class="mt-3 col-md-12 mt-3">
-                        <button type="submit" class="btn btn-primary btn-block "><b>UPDATE PROFILE</b></button>
+                        <button type="submit" class="btn btn-primary btn-block ">Update Now</button>
                     </div>
                 </div>
             </form>
-                    </div>
-                </div>
-            </div>
- 
-
-    
- 
+        </div>
+      </div>
+</div>
+</div>
 @endsection

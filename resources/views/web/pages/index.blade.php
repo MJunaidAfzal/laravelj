@@ -20,15 +20,10 @@
     <!-- hero-area start -->
     <div class="page-banner-area mt-60">
         <div class="container">
-
             <div class="row">
-
-                <div class="col-md-12 ">
-
-         <a style="font-size:18px;" class="badge badge-success badge-lg" href="{{ route('home')}}">BLOG</a>       
-
-                <div class="text-right ">
-                    
+                <div class="col-md-12">
+                    <a href="{{route('home')}}">Blog</a>
+                    <div class="text-right">
                     @auth
                         Hello, <a href="{{route('web.profile.edit')}}">{{auth()->user()->name}}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -39,10 +34,9 @@
                     @guest
                         <a href="{{route('login')}}">LOGIN</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{route('register')}}">REGISTER</a>&nbsp;&nbsp;
                     @endguest
+                    </div>
                 </div>
             </div>
-            </div>
-
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-bar text-center pt-60 pb-60" style="background-image: url({{asset('assets/img/bg/page-itle.jpg')}})">
@@ -62,41 +56,43 @@
                 <div class="col-xl-8 col-lg-8 col-md-12">
                     <div class="postbox mb-40">
                         @foreach($blogs as $blog)
-                        <div class="mt-2 postbox__thumb mb-25">
-                        <a href="{{route('web.pages.details' , $blog->id)}}">
-                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG">
+                        <div class="postbox__thumb mb-25">
+                            <a href="{{ route('web.pages.details' , $blog->id) }}">
+                                <img src="{{asset('upload/blog/'.$blog->image)}}" alt="d" height="100%" width="100%">
                             </a>
                         </div>
                         <div class="postbox__text">
                             <div class="postbox__text-meta pb-20">
                                 <ul>
-                                   
-                                <li>
+                                    <li>
                                         <span class="post-cat">
-                                            <a href="#" tabindex="0">{{ $blog->category_id}}</a>
+                                            <a href="#" tabindex="0">{{( $blog->category->name )}}</a>
                                         </span>
                                     </li>
-                                
                                     <li>
                                         <i class="fas fa-calendar-alt"></i>
                                         <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
                                     </li>
                                     <li>
                                         <i class="far fa-comment"></i>
-                                        <span>(03)</span>
+                                        <span>(00)</span>
                                     </li>
                                 </ul>
                             </div>
                             <h4 class="title-30 font-600 pr-0">
                                 <a href="">{{ $blog->title }}</a>
                             </h4>
-                           <p>{!! $blog->short_discription !!}</p>
-                            <a href="{{route('web.pages.details' , $blog->id)}}" class="read-more">read more</a>
+                            <div class="desc-text mb-20">
+                                 {{ $blog->short_description }}
+                            </div>
+                            <div class="mb-5">
+                                <a href="{{ route('web.pages.details' , $blog->id) }}" class="read-more">read more</a>
+                            </div>
                         </div>
                     @endforeach
 
 
-                        
+
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12">
@@ -105,47 +101,43 @@
                             <img src="{{asset('assets/img/add/add-sidebar.jpg')}}" alt="">
                         </a>
                     </div>
-                    <div class="widget widget-border mb-40 ">
+                    <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Popular posts</h3>
                         @forelse ($popularPosts as $item)
-                        <div class="post__small mb-30">
-                            <div class="post__small-thumb f-left">
-                                <a href="{{ route('web.pages.details' , $item->id) }}">
-                                    <img src="{{asset('upload/blog/'.$item->image)}}" alt="hero image" style="height:100px; width:100px;">
-                                </a>
-                            </div>
-                            <div class="post__small-text fix pl-10 ">
-                                <span class="sm-cat">
-                                    <a href="#">{{$item->category_id}}</a>
-                                </span>
-                                <h4 class="title-13 pr-0">
-                                    <a href="#">{{$item->title}}</a>
-                                </h4>
-                                <div class="post__small-text-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
-                                        </li>
-                                    </ul>
+                            <div class="post__small mb-30">
+                                <div class="post__small-thumb f-left">
+                                    <a href="{{ route('web.pages.details' , $item->id) }}">
+                                        <img src="{{asset('upload/blog/'.$item->image)}}" alt="hero image" style="height:100px; width:100px;">
+                                    </a>
+                                </div>
+                                <div class="post__small-text fix pl-10">
+                                    <span class="sm-cat">
+                                        <a href="#">{{$item->category->name}}</a>
+                                    </span>
+                                    <h4 class="title-13 pr-0">
+                                        <a href="#">{{$item->title}}</a>
+                                    </h4>
+                                    <div class="post__small-text-meta">
+                                        <ul>
+                                            <li>
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @empty
 
                         @endforelse
-
-
-
-                        <div class="widget widget-border mt-4 mb-40">
+                    </div>
+                    <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Categories</h3>
                         <ul>
                             @foreach($categories as $category)
                                 <li><a href="{{route('web.pages.categoryWise',$category->id)}}">{{$category->name}} <span>{{$category->categoryCount($category->id)}}</span></a></li>
                             @endforeach
                         </ul>
-                    </div>
-
                     </div>
                     <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Subscribe our Newsletter!</h3>
@@ -198,7 +190,6 @@
                 </div>
             </div>
 
-            
             <div class="row mt-10">
                 <div class="col-md-12">
                     {{ $blogs->links() }}

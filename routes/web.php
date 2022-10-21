@@ -7,9 +7,8 @@ use App\Http\Controllers\ReaderController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserProfileController;
-
-
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Nav\NavController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,43 +20,51 @@ use App\Http\Controllers\UserProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [IndexController::class,'index'])->name('index');
-Route::get('blog/details/{id}', [IndexController::class, 'details'])->name('web.pages.details');
-Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web.pages.categoryWise');
-Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
-
-//user profile
-Route::get('profile', [UserProfileController::class, 'edit'])->name('web.profile.edit');
-Route::post('profile/update', [UserProfileController::class, 'update'])->name('web.profile.update');
-
-
-
-
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//categorie
-Route::get('categories' , [CategoryController::class , 'index'])->name('categories.index');
-Route::get('categories/create' , [CategoryController::class , 'create'])->name('categories.create');
-Route::post('categories/store' , [CategoryController::class , 'store'])->name('categories.store');
-Route::get('categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::post('categories/{id}/update', [CategoryController::class, 'update'])->name('categories.update');
-Route::get('categories/{id}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get('blog/{id}/details', [IndexController::class, 'details'])->name('web.pages.details');
+Route::get('category/{id}', [IndexController::class, 'categoryWise'])->name('web.pages.categoryWise');
+Route::get('author/{id}', [IndexController::class, 'authorWise'])->name('web.pages.authorWise');
+Route::get('profile', [ProfileController::class, 'edit'])->name('web.profile.edit');
+Route::post('profile/update', [ProfileController::class, 'update'])->name('web.profile.update');
+Route::post('store-comment', [CommentController::class,'store'])->name('web.comment.store');
+
+
+//category
+
+Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+Route::get('categories/create' , [CategoryController::class , 'create'])->name('category.create');
+Route::post('category/store' , [CategoryController::class , 'store'])->name('category.store');
+Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::post('category/{id}/update', [CategoryController::class, 'update'])->name('category.update');
+Route::get('category/{id}/delete', [CategoryController::class, 'delete'])->name('category.delete');
+
+//Reader
 
 Route::get('reader' , [ReaderController::class , 'index'])->name('reader.index');
-Route::get('authors' , [AuthorController::class , 'index'])->name('authors.index');
 
-//blog
 
-Route::get('blogs' , [BlogController::class , 'index'])->name('blogs.index');
-Route::get('blogs/create' , [BlogController::class , 'create'])->name('blogs.create');
-Route::post('blogs/store' , [BlogController::class , 'store'])->name('blogs.store');
-Route::get('blogs/{id}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
-Route::post('blogs/{id}/update', [BlogController::class, 'update'])->name('blogs.update');
-Route::get('blogs/{id}/delete', [BlogController::class, 'delete'])->name('blogs.delete');
+//Author
 
-//profile
-Route::get('author/profile' , [ProfileController::class , 'profile'])->name('profile.edit');
-Route::post('author/profile-update' , [ProfileController::class , 'update'])->name('profile.update');
+Route::get('authors' , [AuthorController::class , 'author'])->name('authors.index');
 
+
+//Author Edit
+Route::get('authors/profile', [AuthorController::class,'profile'])->name('profile.edit');
+Route::post('author/profile-update', [AuthorController::class,'update'])->name('profile.update');
+
+
+//Blog
+
+Route::get('blog' , [BlogController::class , 'index'])->name('blog.index');
+Route::get('blog/create' , [BlogController::class , 'create'])->name('blog.create');
+Route::post('blog/store' , [BlogController::class , 'store'])->name('blog.store');
+Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::post('blog/{id}/update', [BlogController::class, 'update'])->name('blog.update');
+Route::get('blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.delete');
+
+//Nav
+Route::get('nav' , [NavController::class , 'nav'])->name('include.author_left_nav');

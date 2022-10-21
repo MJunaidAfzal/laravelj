@@ -10,15 +10,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    @include('include.styles')
-
+    @include('include.style_2')
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    
     <div id="app">
         
 
@@ -26,6 +22,6 @@
             @yield('content')
         </main>
     </div>
-    @include('include.scripts')
+    @include('include.script')
 </body>
 </html>

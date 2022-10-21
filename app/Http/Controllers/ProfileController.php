@@ -2,46 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function profile(){
-        $user = User::where('id',auth()->user()->id)->first();
-        return view('profile.edit' , compact('user'));
+    public function edit(){
+        return view('web.pages.user-profile');
     }
+
     public function update(Request $request){
-        $request->validate([
-            'name' => 'required|:users,name,',
-            'about' => 'required|max:255',
-            'facebook' => 'required|max:255',
-            'google' => 'required|max:255',
-            'twitter' => 'required|max:255',
-            'linkedin' => 'required|max:255'
-        ]);
-        $imageData = User::where('id',auth()->user()->id)->first();
+        $user = User::where('id',auth()->user()->id)->first();
         if($request->file('thumbnail')){
             $image = $request->file('thumbnail');
-            $imageName = 'thumbnail' . '-' . time() . '.' . $image->getClientOriginalExtension();
-            $image->move('upload/thumbnail/', $imageName);
+            $imageName = 'profile' . '-' . time() . '.' . $image->getClientOriginalExtension();
+            $image->move('upload/profile/', $imageName);
         }
         else{
-            $imageName = $imageData->thumbnail;
+            $imageName =  $user->thumbnail;
         }
-        $update = user::where('id',auth()->user()->id)->update([
+
+        $update = User::where('id',auth()->user()->id)->update([
             'name' => $request->name,
             'about' => $request->about,
             'facebook' => $request->facebook,
-            'google' => $request->google,
             'twitter' => $request->twitter,
+            'google' => $request->google,
             'linkedin' => $request->linkedin,
             'thumbnail' => $imageName,
         ]);
-        if($update > 0){
-            return redirect()->route('profile.edit')->with('success','Profile update');
+
+        if($update  >  0){
+            return redirect()->back()->with('success','Profile Updated');
         }
-        return redirect()->route('profile.edit')->with('Error' , 'Something went wrong');
+        else{
+            return redirect()->back()->with('error','Something went wrong');
+        }
     }
 }

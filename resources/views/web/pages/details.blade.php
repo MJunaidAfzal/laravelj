@@ -10,7 +10,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('index')}}">Home</a>
+                                    <a href="{{ route('index') }}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item">
                                     <a href="#">Library</a>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-xl-8 col-lg-8">
                      <!-- post-details -->
-                     <div class="post-details">
+                    <div class="post-details">
                         <h2 class="details-title mb-15">{{ $blog->title }}</h2>
 
                         <!-- meta -->
@@ -45,15 +45,20 @@
                                     <span>{{ date('d M Y' , strtotime( $blog->created_at ))}}</span>
                                 </li>
                                 <li>
-                                    <i class="far fa-comment"></i>
-                                    <span>(0)</span>
+                                    <i class="fa fa-globe"></i>
+                                    {{$blog->category->name}}
                                 </li>
                                 <li>
-                                <i class="fa fa-eye"></i>
+                                    <i class="far fa-comment"></i>
+                                    <span>(00)</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-eye"></i>
                                     <span>{{$blog->views}}</span>
                                 </li>
                             </ul>
                         </div>
+
                          <!-- share-post-link -->
                         <div class="share-post-link mb-30">
                             <a class="facebook" href="#">
@@ -81,14 +86,12 @@
 
                          <!-- post-thumb -->
                         <div class="post-thumb mb-25">
-                        <img src="{{asset('upload/blog/'.$blog->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG" width="100%">
-                          
-                    </div>
+                            <img src="{{asset('upload/blog/'.$blog->image)}}" alt="d" width="100%" height="100%">
+                        </div>
 
                         <!-- post-content -->
                         <div class="post-content">
-                        {!! $blog->long_discription !!}
-       
+                            {!! $blog->long_description !!}
                         </div>
 
                         <!-- content__tags -->
@@ -105,14 +108,14 @@
                          <!-- author-meta -->
                         <div class="author-meta  mt-60">
                             <div class="media flex-column flex-md-row">
-                                <div class="media-left">
+                                <div style="height:30%; width:30%;" class="media-left">
                                 <a href="{{route('web.pages.authorWise',$blog->author_id)}}">
                                     <img src="{{asset('upload/thumbnail/'.$blog->author-> thumbnail)}}" alt="" class="">
                                 </a>
                                 </div>
                                 <div class="media-body">
-                                <span class="media-heading">
-                                        <a href="#">{{ $blog->author->name }}</a>
+                                    <span class="media-heading">
+                                        <a href="{{route('web.pages.authorWise',$blog->author_id)}}">{{ $blog->author->name }}</a>
                                     </span>
                                     <p>{{ $blog->author->about }}</p>
                                     <div class="social">
@@ -133,43 +136,42 @@
                             </div>
                         </div>
 
-                         <!-- s-content__pagenav -->
-                     
-
                          <!-- also-like -->
                         <div class="also-like mt-30">
                             <div class="section-title mb-30">
                                 <h2>You may also like</h2>
                             </div>
                             <div class="row">
-                                @foreach($alsoLike as $item)
-                                <div class="col-lg-4 col-md-4">
-                                    <div class="postbox mb-30">
-                                        <div class="postbox__thumb">
-                                            <a href="{{route('web.pages.details' , $item->id)}}">
-                                              <img src="{{asset('upload/blog/'.$item->image)}}" alt="BJBFJNHGFVBEHRVBGSEDRVSJG" width="100%">
-                                            </a>
-                                        </div>
-                                        <div class="postbox__text pt-10">
-                                            <div class="postbox__text-meta pb-10">
-                                                <ul>
-                                                    <li>
-                                                        <i class="fas fa-calendar-alt"></i>
-                                                        <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
-                                                    </li>
-                                                    <li>
-                                                        <i class="far fa-comment"></i>
-                                                        <span>(03)</span>
-                                                    </li>
-                                                </ul>
+                                @foreach ($alsoLike as $item)
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="postbox mb-30">
+                                            <div class="postbox__thumb">
+                                                <a href="{{ route('web.pages.details' , $item->id) }}">
+                                                    <img class="img-100" src="{{asset('upload/blog/'.$item->image)}}" alt="hero image">
+                                                </a>
                                             </div>
-                                            <h4 class="pr-0">
+                                            <div class="postbox__text pt-10">
+                                                <div class="postbox__text-meta pb-10">
+                                                    <ul>
+                                                        <li>
+                                                            <i class="fas fa-calendar-alt"></i>
+                                                            <span>{{ date('d M Y' , strtotime( $item->created_at ))}}</span>
+                                                        </li>
+                                                        <li>
+                                                            <i class="far fa-comment"></i>
+                                                            <span>(03)</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <h4 class="pr-0">
                                                     <a href="#">{{$item->title}}</a>
                                                 </h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+
+
                             </div>
                         </div>
 
@@ -180,56 +182,31 @@
                             </div>
                             <div class="latest-comments">
                                 <ul>
-                                    <li>
-                                        <div class="comments-box">
-                                            <div class="comments-avatar">
-                                                <img src="{{asset('assets/img/user/user-01.jpg')}}" alt="">
-                                            </div>
-                                            <div class="comments-text">
-                                                <div class="avatar-name">
-                                                    <h5>Omar Elnagar</h5>
-                                                    <span>September 13, 2018 at 10:38 AM</span>
-                                                </div>
-                                                <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call
-                                                    him Flipper Flipper the faster than lightning. No one you see is smarter than he</p>
-                                                <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                        <ul class="comments-reply">
-                                            <li>
-                                                <div class="comments-box">
-                                                    <div class="comments-avatar">
-                                                        <img src="{{asset('assets/img/user/user-02.jpg')}}" alt="">
+                                    @forelse ($comments as $comment)
+                                        <li>
+                                            <div class="comments-box">
+                                                <div class="comments-avatar">
+                                                    @if(!empty($comment->reader->thumbnail))
+                                                        <img src="{{asset('upload/profile/'.$comment->reader->thumbnail)}}" alt="">
+                                                    @else
+                                                        <img src="{{asset('assets/img/placeholder.png')}}" alt="">
+                                                    @endif
+
                                                     </div>
                                                     <div class="comments-text">
                                                         <div class="avatar-name">
-                                                            <h5>Omar Elnagar</h5>
-                                                            <span>September 13, 2018 at 10:38 AM</span>
+                                                            <h5>{{$comment->reader->name}}</h5>
+                                                            <span>{{date('j F, Y',strtotime($comment->created_at))}}</span>
                                                         </div>
-                                                        <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They
-                                                            call him Flipper Flipper the faster than lightning. No one you see is smarter than he</p>
-                                                        <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
+                                                        <p>{{$comment->comment}}</p>
                                                     </div>
                                                 </div>
+
                                             </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="comments-box">
-                                            <div class="comments-avatar">
-                                                <img src="{{asset('assets/img/user/user-05.jpg')}}" alt="">
-                                            </div>
-                                            <div class="comments-text">
-                                                <div class="avatar-name">
-                                                    <h5>Omar Elnagar</h5>
-                                                    <span>September 13, 2018 at 10:38 AM</span>
-                                                </div>
-                                                <p>They call him Flipper Flipper faster than lightning. No one you see is smarter than he. They call
-                                                    him Flipper Flipper the faster than lightning. No one you see is smarter than he</p>
-                                                <a href="#"><i class="fas fa-reply-all"></i> Reply</a>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @empty
+                                           <i> No comment found</i>
+                                    @endforelse
+
                                 </ul>
                             </div>
                         </div>
@@ -237,18 +214,15 @@
                          <!-- post-comments-form -->
                         <div class="post-comments-form mt-40 mb-40">
                             <div class="section-title mb-30">
-                                <h2>Recent Comments</h2>
+                                <h2>Add Comments</h2>
                             </div>
-                            <form action="#">
+                            <form action="{{route('web.comment.store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
-                                    <div class="col-xl-6">
-                                        <input type="text" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <input type="text" placeholder="Your Email">
-                                    </div>
                                     <div class="col-xl-12">
-                                        <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Your Comments"></textarea>
+                                        <input type="hidden" name="blog_id" value="{{$blog->id}}">
+                                        <input type="hidden" name="author_id" value="{{$blog->author_id}}">
+                                        <textarea name="comment" id="comments" cols="30" rows="10" placeholder="Your Comments" required></textarea>
                                         <button class="btn brand-btn" type="submit">Send message</button>
                                     </div>
                                 </div>
@@ -271,7 +245,7 @@
                                 </div>
                                 <div class="post__small-text fix pl-10">
                                     <span class="sm-cat">
-                                        <a href="#">{{$item->category_id}}</a>
+                                        <a href="#">{{$item->category->name}}</a>
                                     </span>
                                     <h4 class="title-13 pr-0">
                                         <a href="#">{{$item->title}}</a>
@@ -295,7 +269,7 @@
                     <div class="widget widget-border mb-40">
                         <h3 class="widget-title">Categories</h3>
                         <ul>
-                        @foreach($categories as $category)
+                            @foreach($categories as $category)
                                 <li><a href="{{route('web.pages.categoryWise',$category->id)}}">{{$category->name}} <span>{{$category->categoryCount($category->id)}}</span></a></li>
                             @endforeach
                         </ul>

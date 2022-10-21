@@ -10,12 +10,13 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('upload/thumbnail/'.$user->thumbnail)}}" class="img-circle elevation-2" alt="User Image">
-        </div>
+        <img style="height:100%; " src="{{asset('upload/thumbnail/'.$user->thumbnail)}}" alt="" class="img-rounded" height="100%" width="100%">
+      </div>
         <div class="info">
-          <a href="{{route('profile.edit')}}" class="d-block">{{auth()->user()->name}}</a>
+          <a href="{{ route('profile.edit')}}" class="d-block">{{auth()->user()->name}}</a>
         </div>
       </div>
+
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -113,15 +114,11 @@
             </ul>
           </li>
           <li class="nav-item">
-                <a href="{{route('blogs.index')}}" class="nav-link">
-                  <i class="fa fa-edit"></i>
-                  <p>Blogs</p>
-                </a>
-              </li>
-         
-            
-
-
+              <a href="{{ route('blog.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Blog</p>
+              </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

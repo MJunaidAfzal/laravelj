@@ -9,11 +9,11 @@
 
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        
         <!-- Place favicon.ico in the root directory -->
 
 		@include('web.partials.styles')
-@stack('styles')
-
+        @stack('styles')
     </head>
     <body>
         <!--[if lte IE 9]>
@@ -23,12 +23,12 @@
         <!-- Add your site or application content here -->
 
 
+        @include('web.partials.scripts')
 
         @yield('content')
 
         @include('web.partials.footer')
         @include('web.partials.scripts')
-@stack('scripts')
-
+        @stack('scripts')
     </body>
 </html>

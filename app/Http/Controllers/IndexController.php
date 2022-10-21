@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -11,35 +12,34 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index(){
-        $popularPosts = Blog::orderBy('views','DESC')->take(4)->get(); 
+        $popularPosts = Blog::orderBy('views','DESC')->take(4)->get();
         $blogs = Blog::where('status', 1)->paginate(5);
         $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
-        return view('web.pages.index',compact('blogs','categories','popularPosts'));
+        return view('web.pages.index' , compact('blogs','categories','popularPosts'));
     }
-
-    
     public function details($id){
-        $blog = Blog::where('id',$id)->first();
-        $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
+        $blog = Blog::where('id',$id)->firstOrFail();
         $alsoLike = Blog::where('category_id', $blog->category_id)->take(3)->orderBy('id','DESC')->get();
-        $popularPosts = Blog::orderBy('views','DESC')->take(4)->get(); 
+        $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
+        $popularPosts = Blog::orderBy('views','DESC')->take(4)->get();
 
-        //views count
-        $oldviews = $blog->views;
-        $newviews = $oldviews + 1;
+        //Views Count
+        $oldViews = $blog->views;
+        $newViews = $oldViews + 1;
 
-        //updating views to blog table
-        $views = Blog::where('id',$id)->update(['views' => $newviews]);
-        return view('web.pages.details',compact('blog','alsoLike','categories','popularPosts'));
+        //Updating Views to Blog table
+        $views  = Blog::where('id',$id)->update(['views' => $newViews]);
+
+        $comments = Comment::where('blog_id',$id)->get();
+
+        return view('web.pages.details' , compact('blog','alsoLike','categories','popularPosts','comments'));
     }
-
     public function categoryWise($id){
         $blog = Category::where('id',$id)->firstOrFail();
         $blogs  = Blog::where('category_id',$id)->paginate(9);
         $categories  = Category::where('status',1)->orderBy('name','ASC')->get();
-        return view('web.pages.country-wise',compact('blogs','blog','categories'));
+        return view('web.pages.category-wise',compact('blogs','blog','categories'));
     }
-
     public function authorWise($id){
         $author = User::where('id',$id)->firstOrFail();
         $blogs  = Blog::where('author_id',$id)->paginate(9);

@@ -2,111 +2,85 @@
 
 @section('content')
 <style>
-body{
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        background-color:lightgrey;
-    }
+  body{
+    background-color: #E9ECEF;
+  }
+  h2{
+    margin-top: 100px;
+  }
 </style>
-
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div style="margin-top:100px;" class="col-md-8">
-  <div class="p-2 card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="#" class="h1"><b>Admin</b>LTE</a>
-    </div>
-    <div class="card-body">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2 class="text-center text-secondary">AdminLTE</h2>
+          <a href="{{route('index')}}" class="btn btn-danger mb-5">Back to Blog</a>
+        <div class="card">
+    <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
       <form action="{{ route('register') }}" method="post">
-      @csrf
-                <div class="container">
-                  <div class="row">
-                  <div class="col-md-6">
-                <label  for="name" class=" col-form-label text-md-end">{{ __('Name') }}</label>
-                </div>
-                <div class="col-md-6">
-            <label for="email" class=" col-form-label text-md-end">{{ __('Email Address') }}</label>
+        @csrf
+        <div class="input-group mb-3">
+        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter your Name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
+@error('name')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
             </div>
-                  </div>
-                </div>
-            
-    <div class="container">
-      <div class="row">
-      <div class="col-md-6">
-         <input placeholder="Enter Your Name" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter your E-mail" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                               
-          
-            <div class="col-md-6">
-          <input placeholder="Enter Your Email" id="email" type="email" class=" form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+@error('email')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
-      </div>
-    </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your Password" name="password" required autocomplete="new-password">
 
-    <div class="container mt-3">
-      <div class="row">
-      <div class="col-md-6">
-            <label for="password" class=" col-form-label text-md-end">{{ __('Password') }}</label>
-
+@error('password')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
             </div>
-            <div class="col-md-6">
-            <label for="password-confirm" class="  col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
+          </div>
+        </div>
+        <div class="input-group mb-3">
+        <input id="password-confirm" type="password" class="form-control" placeholder="Re-type your Password" name="password_confirmation" required autocomplete="new-password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
             </div>
+          </div>
+        </div>
+        <div class="row mb-3">
 
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-      <div class="col-md-6">
-   <input placeholder="Enter Your Password" id="password" type="password" class=" form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-            </div>
-            <div class="col-md-6">
-            <input placeholder="password-confirm" id="password-confirm" type="password" class=" form-control" name="password_confirmation" required autocomplete="new-password">
-
-            </div>
-      </div>
-    </div>
-
-    <div class="container mt-2">
-      <div class="row">
-            <div class="col-md-12">
-            <label for="role" class=" col-form-label text-md-end">Please Select</label>
-            </div>
-            <div class="col-md-12">
-                <select name="role_id" class="form-control">
+                            <div class="col-md-12">
+                            <select name="role_id" class="form-control">
                                 <option value="2">Reader</option>
-                                <option value="3">Author</option>
-                               </select>
-            </div>
-      </div>
-    </div>
-
+                                <option value="3">author</option>
+                            </select>
+                            </div>
+                        </div>
         <div class="row">
-          <div class="col-8 mt-3">
+          <div class="col-6">
             <div class="icheck-primary">
               <input type="checkbox" id="agreeTerms" name="terms" value="agree">
               <label for="agreeTerms">
@@ -114,15 +88,16 @@ body{
               </label>
             </div>
           </div>
-          <!-- /.col -->
-          <div class="col-4 mt-3">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+          <div class="col-md-6">
+          <button type="submit" class="btn-block btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
           </div>
-          <!-- /.col -->
         </div>
       </form>
 
       <div class="social-auth-links text-center">
+        <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i>
           Sign up using Facebook
@@ -134,16 +109,10 @@ body{
       </div>
 
       <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
-      
     </div>
-    <!-- /.form-box -->
-  </div><!-- /.card -->
-</div>
-
-
+  </div>
         </div>
     </div>
 </div>
-
-
+</div>
 @endsection
